@@ -1,0 +1,15 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "Furniture Store",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node shopping-backend/server.js"
+  },
+  "author": "Zain Ul Abideen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

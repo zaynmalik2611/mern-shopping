@@ -15,7 +15,6 @@ import products from "../products";
 export default function ProductPage() {
   let params = useParams();
   const product = products.find((p) => p._id === params.id);
-  console.log("pr: ", product);
   return (
     <>
       <Link className="btn btn-dark my-3" to="/">
