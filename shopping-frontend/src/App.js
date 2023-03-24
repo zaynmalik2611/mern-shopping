@@ -2,6 +2,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "react-bootstrap";
 import "./bootstrap.min.css";
+import React from "react";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import Signin from "./pages/Signin";
+import Cart from "./pages/Cart";
+import Product from "./components/Product";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -9,7 +16,12 @@ function App() {
       <Header />
       <main className="py-3">
         <Container>
-          <h1>Furniture Store</h1>
+          <Routes>
+            <Route element={<Home />} path="/" />
+            <Route element={<ProductPage />} path="/product/:id" />
+            <Route element={<Signin />} path="/signin" />
+            <Route element={<Cart />} path="/cart" />
+          </Routes>
         </Container>
       </main>
       <Footer />

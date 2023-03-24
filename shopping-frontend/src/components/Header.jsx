@@ -1,3 +1,4 @@
+import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { BsCart3, BsFillPersonFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -7,12 +8,15 @@ export default function Header() {
     <header>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/home">Furniture Store</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            Furniture Store
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="">
             <Nav className="ms-auto">
               <Nav.Link
-                href="/cart"
+                to="/cart"
+                as={Link}
                 className="d-flex flex-column justify-content-center "
               >
                 <div className="d-flex h-fit">
@@ -20,7 +24,7 @@ export default function Header() {
                   <p className="mb-0">Cart </p>
                 </div>
               </Nav.Link>
-              <Nav.Link href="/signin" className="d-flex ">
+              <Nav.Link to="/signin" as={Link} className="d-flex ">
                 <BsFillPersonFill className="m-1 mb-0 " />
                 <p className="mb-0">Sign In </p>
               </Nav.Link>
