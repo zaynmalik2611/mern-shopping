@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Signin from "./pages/Signin";
 import Cart from "./pages/Cart";
-import Product from "./components/Product";
 import ProductPage from "./pages/ProductPage";
 
 function App() {
