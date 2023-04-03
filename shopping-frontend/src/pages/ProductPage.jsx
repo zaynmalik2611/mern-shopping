@@ -9,27 +9,33 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { getProductDetails } from "../actions/productActions";
 import Rating from "../components/Rating";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 export default function ProductPage() {
   let params = useParams();
-  const [product, setProduct] = useState();
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    (async function fetchAProduct() {
-      const res = await axios.get(`/api/products/${params.id}`);
-      if (res.status === 200) {
-        setProduct(res.data);
-      }
-    })();
-  });
+    dispatch(getProductDetails(params.id));
+  }, [params, dispatch]);
+
+  const productDetails = useSelector((state) => state.product);
+  const { loading, error, product: productResp } = productDetails;
+  const { data: product } = productResp;
   return (
     <>
       <Link className="btn btn-dark my-3" to="/">
         Go Back
       </Link>
-      {product !== undefined ? (
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant={"danger"}>{error}</Message>
+      ) : (
         <Row>
           <Col md={5}>
             <Image src={product.image} alt={product.name} fluid rounded />
@@ -84,8 +90,6 @@ export default function ProductPage() {
             </Card>
           </Col>
         </Row>
-      ) : (
-        <div>Product not found</div>
       )}
     </>
   );

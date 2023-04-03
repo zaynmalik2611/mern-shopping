@@ -100,7 +100,7 @@ const orderSchema = mongoose.Schema(
       type: Date,
     },
   },
-  { timestamps: true }
+  { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
 const Order = mongoose.model("Order", orderSchema);
